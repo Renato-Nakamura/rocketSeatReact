@@ -41,6 +41,11 @@ export function Home() {
             alert('Essa sala não existe')
             return
         }
+        if(roomRef.val().closedAt){
+
+            alert('Essa sala foi finalizada.')
+            return
+        }
 
         history.push(`/rooms/${roomRef.key}`)
     }
