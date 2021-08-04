@@ -75,7 +75,7 @@ export function Room() {
             <main>
                 <div className="room-title">
                     <h1>Sala {title}</h1>
-                    {questions.length && <span>{questions.length} perguntas</span>}
+                    {questions.length > 0 && <span>{questions.length} perguntas</span>}
                 </div>
 
                 <form onSubmit={sendQuestion}>
