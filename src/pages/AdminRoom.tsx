@@ -2,6 +2,9 @@
 import { useHistory, useParams } from 'react-router-dom'
 import logoImg from '../assets/images/logo.svg'
 import deleteImg from '../assets/images/delete.svg'
+import checkImg from '../assets/images/check.svg'
+import answerImg from '../assets/images/answer.svg'
+import likeImg from '../assets/images/like.svg'
 import { Button } from '../components/Button'
 import { Question } from '../components/Question'
 import { RoomCode } from '../components/RoomCode'
@@ -34,6 +37,16 @@ export function AdminRoom() {
             await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
         }
     }
+    async function checkQuestion(questionId: string){
+        await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+            isAnswered: true
+        })
+    }
+    async function answerQuestion(questionId: string){
+        await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+            isHighlighted: true
+        })
+    }
 
     return (
         <div id="page-room">
@@ -59,8 +72,22 @@ export function AdminRoom() {
                         key={question.id}
                         content={question.content}
                         author={question.author}
-                        
+                        isHighlighted = {question.isHighlighted}
+                        isAnswered = {question.isAnswered}
                         >
+                            <div className='like'>
+                            <span>{question.likeCount}</span>
+                            <img src={likeImg} alt="" />
+                            </div>
+                            {!question.isAnswered && (
+                            <><img 
+                            onClick={() => checkQuestion(question.id)}
+                            src={checkImg} alt="Excluir pergunta" />
+                            <img 
+                            onClick={() => answerQuestion(question.id)}
+                            src={answerImg} alt="Excluir pergunta" />
+                            </>
+                            )}
                             <img 
                             onClick={() => deleteQuestion(question.id)}
                             src={deleteImg} alt="Excluir pergunta" />
