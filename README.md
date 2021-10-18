@@ -1,4 +1,12 @@
-# Getting Started with Create React App
+# Repositório utilizado para o estudo do curso fornecido pela rocketSeat
+Esse projeto foi o meu primeiro contato com o Framework React, esse projeto aborda todos os principais pontos dessa tecnologia e associa com o firebase para autenticação e banco de dados não relacional
+
+##Aprendizados 
+Primeiro contato com Firebase e React
+Hooks, States, Contextos e Componentização
+Banco de dados não relacional
+Autenticação com o Google
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
